@@ -16,8 +16,6 @@ def detail(request, question_id):
     context = {'question' : question}
     return render(request, 'pybo/question_detail.html', context)
 
-# 1. html 만들기 2. urls에 경로 추가하기 3. views.py에서 랜더링하기
-
 def answer_create(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     question.answer_set.create(content=request.POST.get('content'), create_date=timezone.now())
