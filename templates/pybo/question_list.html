@@ -1,7 +1,6 @@
-
-{% load static %}
-<link rel="stylesheet" href="{% static 'bootstrap.css' %}">
-
+{% extends 'base.html' %}  <!-- 탬플릿 상속 base.html을 상속한다 -->
+{% block content %}
+<!-- base.html 의 블락 컨텐츠 앤드블락 사이에 들어갈 내용만 입력한다. -->
 <div class="container my-3"> <!-- my-3은 찾아보자 ...마진과 같은것... -->
     <table class="table">
         <thead>
@@ -27,4 +26,7 @@
         {% endif %}
         </tbody>
     </table>
+    <a href="{% url 'pybo:question_create' %}" class="btn btn-primary">질문 등록하기</a>
 </div>
+
+{% endblock %}

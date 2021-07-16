@@ -1,7 +1,9 @@
+import requests
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from .models import Question, Answer
 from django.utils import timezone
+from .forms import QuestionForm, AnswerForm
 
 def index(request):
     # DB에 있는 퀘스쳔모델을 가져옴            -를 붙이면 내림차순 정렬이 된다.
@@ -18,6 +20,31 @@ def detail(request, question_id):
 
 def answer_create(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
-    question.answer_set.create(content=request.POST.get('content'), create_date=timezone.now())
-    return redirect('pybo:detail', question_id=question.id)
+    if request.method == 'POST':
+        form = AnswerForm(request.POST)
+        if form.is_valid():
+            answer = form.save(commit=False)
+            answer.question = question
+            answer.create_date = timezone.now()
+            answer.save()
+            return redirect('pybo:detail', question_id=question.id)
+    else:   #request.method == 'GET'
+        form = AnswerForm()
+    context = {'question':question, 'form':form}
+    return render(request, 'pybo/question_detail.html', context)
      #똑같은 페이지에 나올수 있게 하는 redirect
+
+def question_create(request):
+    # 질문 등록함수.
+    if request.method == "POST":
+        form = QuestionForm(request.POST)
+        if form.is_valid():
+            question = form.save(commit=False)
+            question.create_date = timezone.now()
+            question.save()
+            return redirect('pybo:index')
+    else:
+        form = QuestionForm()
+
+    context = {'form': form}
+    return render(request, 'pybo/question_form.html', context)
