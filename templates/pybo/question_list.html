@@ -1,22 +1,37 @@
-{% extends 'base.html' %}  <!-- 탬플릿 상속 base.html을 상속한다 -->
+{% extends 'base.html' %}
+{% load pybo_filter %}
 {% block content %}
 <!-- base.html 의 블락 컨텐츠 앤드블락 사이에 들어갈 내용만 입력한다. -->
 <div class="container my-3"> <!-- my-3은 찾아보자 ...마진과 같은것... -->
     <table class="table">
         <thead>
-            <tr class="thead-dark">
+            <tr class="text-center thead-dark">
                 <th>번호</th>
-                <th>제목</th>
+                <th style="width:50%">제목</th>
+                <th>작성자</th>
                 <th>작성일자</th>
             </tr>
         </thead>
         <tbody>
         {% if question_list %}
             {% for question in question_list %}
-            <tr>
-                <td>{{ forloop.counter }}</td>  <!-- 위에 번호 -->
-                <td><a href="{% url 'pybo:detail' question.id %}">{{ question.subject }}</a></td> <!-- 제목 -->
-                <td>{{ question.create_date }}</td> <!-- 작성일자 -->
+            <tr class="text-center">
+                <td>
+                    <!-- 번호 = 전체건수 - 시작인덱스 - 현재인덱스 + 1 -->
+                    {{ question_list.paginator.count|sub:question_list.start_index|sub:forloop.counter0|add:1 }}
+                </td>
+                <td class="text-left">
+                    <a href="{% url 'pybo:detail' question.id %}">{{ question.subject }}</a>
+                    {% if question.answer_set.count > 0 %}
+                    <span class="text-danger small ml-2">{{ question.answer_set.count }}</span>
+                    {% endif %}
+                </td>
+                <td> <!-- 글쓴이 추가 -->
+                    {{ question.author.username }}
+                </td>
+                <td> <!-- 작성일자 -->
+                    {{ question.create_date }}
+                </td>
             </tr>
             {% endfor %}
         {% else %}
@@ -26,6 +41,51 @@
         {% endif %}
         </tbody>
     </table>
+
+<!--    페이징 처리 시작-->
+    <ul class="pagination justify-content-center">
+        <!-- 이전페이지 -->
+        {% if question_list.has_previous %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ question_list.previous_page_number }}">이전</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
+        </li>
+        {% endif %}
+
+        <!-- 페이지 리스트 -->
+        {% for page_number in question_list.paginator.page_range %}
+        {% if page_number >= question_list.number|add:-5 and page_number <= question_list.number|add:5 %}
+            {% if page_number == question_list.number %}
+            <li class="page-item active" aria-current="page">
+                <a class="page-link" href="?page={{ page_number }}">
+                    {{ page_number }}
+                </a>
+            </li>
+            {% else %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_number }}">
+                    {{ page_number }}
+                </a>
+            </li>
+            {% endif %}
+        {% endif %}
+        {% endfor %}
+
+        <!-- 다음 페이지 -->
+        {% if question_list.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ question_list.next_page_number }}">다음</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
+        </li>
+        {% endif %}
+    </ul>
+
     <a href="{% url 'pybo:question_create' %}" class="btn btn-primary">질문 등록하기</a>
 </div>
 

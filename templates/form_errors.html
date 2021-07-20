@@ -1,5 +1,5 @@
 {% if form.errors %}
-  {% for field in form %}
+  {% for field in form %} <!-- 필드오류출력 -->
     {% for error in field.errors %}
       <div class="alert alert-danger">
         <strong>{{ field.label }}</strong>
@@ -7,9 +7,9 @@
       </div>
     {% endfor %}
   {% endfor %}
-  {% for error in form.non_field_errors %}
+  {% for error in form.non_field_errors %} <!-- 논필드 오류출력 -->
     <div class="alert alert-danger">
-        {{ error }}
-      </div>
+        <strong>{{ error }}</strong>
+    </div>
   {% endfor %}
 {% endif %}

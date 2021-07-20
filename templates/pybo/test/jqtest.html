@@ -1,0 +1,33 @@
+{% load static %}
+
+<!--jq 연습용 파일-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jqtest</title>
+    <script src="{% static 'pybo/jquery-3.6.0.js' %}"></script>
+    <script>
+        $(function(){
+            $('p').on('mouseover', function(){
+                $(this).hide();
+            });
+
+            $('p').on('mouseout', function(){
+                $(this).show();
+            });
+
+            /* 주석처리
+            $('p').click(function(){
+                $(this).hide()
+            });
+            */
+        });
+    </script>
+</head>
+<body>
+    <p>클릭하면 사라집니다.</p>
+</body>
+</html>
+
+<!--파이썬에서 j쿼리 구현 테스트-->

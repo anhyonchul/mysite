@@ -10,3 +10,5 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('signup/', views.signup, name='signup')
 ]
+
+# 제네릭 뷰 방식 - 함수를 직접 정의할 필요가 없음.
