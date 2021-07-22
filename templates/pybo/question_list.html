@@ -2,11 +2,35 @@
 {% load pybo_filter %}
 {% block content %}
 <!-- base.html 의 블락 컨텐츠 앤드블락 사이에 들어갈 내용만 입력한다. -->
-<div class="container my-3"> <!-- my-3은 찾아보자 ...마진과 같은것... -->
+<div class="container my-3">
+
+    <div class="row justify-content-between my-3">
+        <!-- 정렬기능 추가 -->
+        <div class="col-2">
+            <select class="form-control so">
+                <option value="recent" {% if so == 'recent' %}selected{% endif %}>최신순</option>
+                <option value="recommend" {% if so == 'recommend' %}selected{% endif %}>추천순</option>
+                <option value="popular" {% if so == 'popular' %}selected{% endif %}>인기순</option>
+            </select>
+        </div>
+        <!-- 정렬기능 끝 -->
+
+        <!-- 검색기능 추가 -->
+        <div class="col-4 input-group">
+            <input type="text" class="form-control kw" value="{{ kw|default_if_none:'' }}">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" id="btn_search">검색</button>
+            </div>
+        </div>
+        <!-- 검색기능 끝 -->
+    </div>
+
+
     <table class="table">
         <thead>
             <tr class="text-center thead-dark">
                 <th>번호</th>
+                <th>추천</th>
                 <th style="width:50%">제목</th>
                 <th>작성자</th>
                 <th>작성일자</th>
@@ -16,16 +40,26 @@
         {% if question_list %}
             {% for question in question_list %}
             <tr class="text-center">
+                <!-- 게시물 번호영역 = 전체건수 - 시작인덱스 - 현재인덱스 + 1 -->
                 <td>
-                    <!-- 번호 = 전체건수 - 시작인덱스 - 현재인덱스 + 1 -->
                     {{ question_list.paginator.count|sub:question_list.start_index|sub:forloop.counter0|add:1 }}
                 </td>
+                <!-- 추천 영역 -->
+                <td>
+                    {% if question.voter.all.count > 0 %}
+                    <span class="badge badge-warning px-2 py-1">
+                        {{ question.voter.all.count }}
+                    </span>
+                    {% endif %}
+                </td>
+                <!-- 게시물 제목 영역 -->
                 <td class="text-left">
-                    <a href="{% url 'pybo:detail' question.id %}">{{ question.subject }}</a>
+                    <a href="{% url 'pybo:detail' question.id %}" style="color:black">{{ question.subject }}</a>
                     {% if question.answer_set.count > 0 %}
                     <span class="text-danger small ml-2">{{ question.answer_set.count }}</span>
                     {% endif %}
                 </td>
+
                 <td> <!-- 글쓴이 추가 -->
                     {{ question.author.username }}
                 </td>
@@ -47,7 +81,7 @@
         <!-- 이전페이지 -->
         {% if question_list.has_previous %}
         <li class="page-item">
-            <a class="page-link" href="?page={{ question_list.previous_page_number }}">이전</a>
+            <a class="page-link" data-page="{{ question_list.previous_page_number }}" href="#">이전</a>
         </li>
         {% else %}
         <li class="page-item disabled">
@@ -60,13 +94,13 @@
         {% if page_number >= question_list.number|add:-5 and page_number <= question_list.number|add:5 %}
             {% if page_number == question_list.number %}
             <li class="page-item active" aria-current="page">
-                <a class="page-link" href="?page={{ page_number }}">
+                <a class="page-link" data-page="{{ page_number }}" href="#">
                     {{ page_number }}
                 </a>
             </li>
             {% else %}
             <li class="page-item">
-                <a class="page-link" href="?page={{ page_number }}">
+                <a class="page-link" data-page="{{ page_number }}" href="#">
                     {{ page_number }}
                 </a>
             </li>
@@ -77,7 +111,7 @@
         <!-- 다음 페이지 -->
         {% if question_list.has_next %}
         <li class="page-item">
-            <a class="page-link" href="?page={{ question_list.next_page_number }}">다음</a>
+            <a class="page-link" data-page="{{ question_list.next_page_number }}" href="#">다음</a>
         </li>
         {% else %}
         <li class="page-item disabled">
@@ -85,8 +119,38 @@
         </li>
         {% endif %}
     </ul>
+    <!-- 페이징 처리 끝 -->
 
     <a href="{% url 'pybo:question_create' %}" class="btn btn-primary">질문 등록하기</a>
 </div>
 
+<form id="searchForm" method="get" action="{% url 'pybo:board' %}">
+    <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
+    <input type="hidden" id="page" name="page" value="{{ page }}">
+    <input type="hidden" id="so" name="so" value="{{ so }}">
+</form>
+
+{% endblock %}
+
+{% block script %}
+<script type='text/javascript'>
+$(document).ready(function(){
+    $(".page-link").on('click', function() {
+        $("#page").val($(this).data("page"));
+        $("#searchForm").submit();
+    });
+
+    $("#btn_search").on('click', function() {
+        $("#kw").val($(".kw").val());
+        $("#page").val(1);
+        $("#searchForm").submit();
+    });
+
+    $(".so").on('change', function() {
+        $("#so").val($(this).val());
+        $("#page").val(1);
+        $("#searchForm").submit();
+    });
+});
+</script>
 {% endblock %}

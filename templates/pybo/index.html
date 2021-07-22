@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
+    <script src="{% static 'pybo/watch.js' %}"></script>
+    <title>Welcome! PyWeb</title>
+</head>
+<body>
+  {% include 'navbar.html' %}
+  <div class="jumbotron">
+    <div class="text-center">
+      <h1>Welcome! To My Page</h1>
+    </div>
+  </div>
+
+  <div class="container">
+      <div class="text-center" style="float:none; margin:0 auto">
+          <img src="{% static 'pybo/MHR.png' %}" alt="몬스터헌터라이즈">
+          <p id="demo" class="my-3"></p>
+      </div>
+  </div>
+
+<!-- 제이쿼리 JS -->
+<script src="{% static 'jquery-3.6.0.js' %}"></script>
+<!-- 부트스트랩 JS -->
+<script src="{% static 'bootstrap.js' %}"></script>
+</body>
+</html>
