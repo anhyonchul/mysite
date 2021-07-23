@@ -20,10 +20,13 @@
                 {% endif %}
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'pybo:profile' %}"><strong>나의 프로필</strong></a>
+                <a class="nav-link" href="{% url 'pybo:board' %}"><strong>질문/답변 게시판</strong></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'pybo:board' %}"><strong>질문/답변 게시판</strong></a>
+                <a class="nav-link" href="{% url 'pybo2:index' %}"><strong>취미게시판(작업중)</strong></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'pybo:profile' %}"><strong>나의 프로필</strong></a>
             </li>
 
         </ul>

@@ -1,7 +1,4 @@
 from django.contrib import admin
-
-# 모델 등록
-
 from .models import Question, Answer
 
 
@@ -15,4 +12,3 @@ class AnswerAdmin(admin.ModelAdmin):
 
 admin.site.register(Question, QuestionAdmin)
 admin.site.register(Answer, AnswerAdmin)
-
