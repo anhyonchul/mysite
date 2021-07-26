@@ -1,22 +1,57 @@
-{% load static %}
+{% extends 'base.html' %}
 
-<!doctype html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'pybo/profile.css' %}">
-    <title>Welcome! PyWeb</title>
-</head>
-<body>
-{% include 'navbar.html' %}
+{% block style %}
+
+/* 구글 웹 폰트 적용 */
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Otomanopee+One&display=swap');
+
+
+/* header 스타일 */
+header{width: 100%; height: 350px; background: url("/static/pybo/bg5.jpg") no-repeat; background-size: cover;}
+#nav{height: 52px; background: darkslategrey; line-height: 60px;}
+#main-nav{list-style: none; text-align: right; padding-right: 40px; font-size: 1.3rem;
+        font-family: 'Otomanopee One', sans-serif;}
+#main-nav li{display: inline; margin:0 15px}
+#main-nav li a:link, a:visited{text-decoration: none; color:greenyellow}
+#main-nav li a:hover{color: yellow}
+
+/* 본문 스타일 */
+section{width: 100%; padding: 10px 5%;}
+section:nth-child(2n){background: #FDF5E6}
+section:nth-child(2n+1){background: rgb(215, 239, 253)}
+section .page-title{padding: 15px; font-family: 'Do Hyeon', sans-serif;}
+section .content .text p{line-height: 2em; padding-left: 30px;}
+section .content #career li{margin-left: 50px; line-height: 2em; list-style: none;
+    font-family: 'Do Hyeon', sans-serif;}
+section .content #link{padding-left: 30px;}
+section .content #link li{margin: 15px}
+section .content #link li a{text-decoration: none; color:black; font-family: 'Do Hyeon', sans-serif;}
+#job {text-align: right;}
+
+/* footer 스타일 */
+footer{height: 60px; border-top: 2px solid #aaa}
+footer #bottomMenu{margin-top: 20px; margin-left: 60px;}
+footer #bottomMenu ul{list-style: none;}
+footer #bottomMenu ul li{display: inline; padding: 0 20px; border-right: 1px solid #ccc}
+footer #bottomMenu ul li:last-child{border:none}
+footer #bottomMenu ul li a{text-decoration: none; color: #222}
+
+{% endblock %}
+
+
+{% block content %}
+{% load static %}
 <br>
-<div id="container">
+<div class="container my-1">
+  <table class="table my-1">
+      <thead>
+          <tr class="thead-dark">
+              <th>나의 프로필 페이지</th>
+          </tr>
+      </thead>
+  </table>
+<div>
     <header>
-        <div id="logo">
-            <h2><strong>MY PROFILE PAGE</strong></h2>
-        </div>
         <nav id="nav">
             <ul id="main-nav">
                 <li><a href="#who">Who Am I</a></li>
@@ -25,13 +60,14 @@
             </ul>
         </nav>
     </header>
+    <br>
     <section id="who">
         <div class="page-title">
             <h2><strong>Who Am I</strong></h2>
         </div>
         <div class="content">
             <div class="photo" style="float:right">
-                <img src="{% static 'pybo/mypic.jpg' %}" width="250px" height="155px" alt="내사진">
+                <img src="{% static 'pybo/mypic.jpg' %}" width="250px" height="160px" alt="내사진">
             </div>
             <div class="text">
                 <p>인천출생, 인천세일고등학교, 경기대학교 행정학과 졸업</p>
@@ -47,10 +83,11 @@
         </div>
         <div class="content">
             <div class="photo" style="float:left">
-                <img src="{% static 'pybo/career.jpg' %}" width="250px" height="155px" alt="career">
+                <img src="{% static 'pybo/career.jpg' %}" width="250px" height="160px" alt="career">
             </div>
             <div class="text">
                 <p>총무, 영업, 자영업운영부터 요리까지 다소 특이한 이력들이 있습니다.</p>
+                <p>여러 실무경험을 바탕으로 다방면의 작업이 가능합니다.</p>
                 <ul id="career">
                     <li>한국금융투자협회 - 총무팀</li>
                     <li>(주)한국에자이 - 영업팀</li>
@@ -67,14 +104,15 @@
         </div>
         <div class="content">
             <div class="photo" style="float:right">
-                <img src="{% static 'pybo/skill.jpg' %}" width="250px" height="155px" alt="skill">
+                <img src="{% static 'pybo/skill.jpg' %}" width="250px" height="160px" alt="skill">
             </div>
             <div class="text">
                 <p>☞ 작품을 클릭하면 사이트로 이동합니다.</p>
                 <ol id="link">
                     <li><a href="http://127.0.0.1:8000/pybo/board/">회원관리형 게시판</a></li>
-                    <li><a href="#">북마크 관리 페이지</a></li>
-                    <li><a href="#">팀 프로젝트 이름</a></li>
+                    <li><a href="#">팀 프로젝트 1 (준비중)</a></li>
+                    <li><a href="#">팀 프로젝트 2 (준비중)</a></li>
+                    <li><a href="#">팀 프로젝트 3 (준비중)</a></li>
                 </ol>
             </div>
         </div>
@@ -90,10 +128,9 @@
             </ul>
         </div>
     </footer>
+  </div>
+
 </div>
-<!-- 제이쿼리 JS -->
-<script src="{% static 'jquery-3.6.0.js' %}"></script>
-<!-- 부트스트랩 JS -->
-<script src="{% static 'bootstrap.js' %}"></script>
-</body>
-</html>
+
+
+{% endblock %}

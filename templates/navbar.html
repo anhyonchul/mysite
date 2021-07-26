@@ -24,10 +24,10 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"><strong>드롭다운연습</strong></a>
                     <div class="dropdown-menu">
-                        <a class="nav-link" href="{% url 'pybo:jqtest' %}">TEST 1</a>
-                        <a class="nav-link" href="{% url 'pybo:imgtest' %}">TEST 2</a>
-                        <a class="nav-link" href="{% url 'pybo:market' %}">TEST 3</a>
-                        <a class="nav-link" href="{% url 'pybo:components' %}">TEST 4</a>
+                        <a class="nav-link" href="{% url 'pybo:jqtest' %}" target="_blank">TEST 1</a>
+                        <a class="nav-link" href="{% url 'pybo:imgtest' %}" target="_blank">TEST 2</a>
+                        <a class="nav-link" href="{% url 'pybo:market' %}" target="_blank">TEST 3</a>
+                        <a class="nav-link" href="{% url 'pybo:components' %}" target="_blank">TEST 4</a>
                     </div>
             </li>
 
@@ -42,7 +42,8 @@
     </button>
 
     <a class="navbar-brand" href="{% url 'pybo:index' %}">
-        <img src="{% static 'pybo/pyweb_banner.jpg' %}" width="100px" height="35px" alt="navpic"></a>
+        <img src="{% static 'pybo/pyweb_banner.jpg' %}" width="110px" height="32px" alt="navpic"
+             style="border: 3px solid #000; border-radius: 5px; "></a>
 
     <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav-R"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
