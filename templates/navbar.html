@@ -32,13 +32,14 @@
 
     <!--로고 부분-->
     <div>
-    <a class="navbar-brand" href="{% url 'pybo:index' %}">
-        <img src="{% static 'pybo/pyweb_banner.jpg' %}" width="100px" height="35px" alt="navpic">
-    </a>
     <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
+
+    <a class="navbar-brand" href="{% url 'pybo:index' %}">
+        <img src="{% static 'pybo/pyweb_banner.jpg' %}" width="100px" height="35px" alt="navpic"></a>
+
     <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav-R"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
