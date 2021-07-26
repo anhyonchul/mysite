@@ -12,6 +12,7 @@ urlpatterns = [
     path('board/', base_views.board, name='board'),
     path('<int:question_id>/', base_views.detail, name='detail'),
     path('profile/', base_views.profile, name='profile'),
+    path('profile2/', base_views.profile2, name='profile2'),
 
     # question_views.py 로 연결
     path('question/create/', question_views.question_create, name='question_create'),

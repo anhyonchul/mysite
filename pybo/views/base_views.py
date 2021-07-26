@@ -55,3 +55,8 @@ def detail(request, question_id):
 
 def profile(request):
     return render(request, 'pybo/profile.html')
+
+
+def profile2(request):
+    return render(request, 'pybo/profile2.html')
+
