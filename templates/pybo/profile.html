@@ -1,89 +1,96 @@
 {% load static %}
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
-    <link rel="stylesheet" href="{% static 'pybo/profile.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'pybo/profile.css' %}">
     <title>Welcome! PyWeb</title>
 </head>
 <body>
 {% include 'navbar.html' %}
-    <br>
-    <div id="container">
-        <header>
-            <div id="logo">
-                <h2><strong>MY PROFILE PAGE</strong></h2>
+<br>
+<div id="container">
+    <header>
+        <div id="logo">
+            <h2><strong>MY PROFILE PAGE</strong></h2>
+        </div>
+        <nav>
+            <ul id="main-nav">
+                <li><a href="#who">Who Am I</a></li>
+                <li><a href="#job">Career</a></li>
+                <li><a href="#skill">My Skill</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="who">
+        <div class="page-title">
+            <h2><strong>Who Am I</strong></h2>
+        </div>
+        <div class="content">
+            <div class="photo" style="float:right">
+                <img src="{% static 'pybo/mypic.jpg' %}" width="250px" height="155px" alt="내사진">
             </div>
-            <nav>
-                <ul id="main-nav">
-                    <li><a href="#who">Who Am I</a></li>
-                    <li><a href="#job">Career</a></li>
-                    <li><a href="#skill">My Skill</a></li>
-                </ul>
-            </nav>
-        </header>
-        <section id="who">
-            <div class="page-title">
-                <h2><strong>Who Am I</strong></h2>
+            <div class="text">
+                <p>인천출생, 인천세일고등학교, 경기대학교 행정학과 졸업</p>
+                <p>현재 인천 부개동에 거주중. 취미는 게임 / 책읽기 입니다.</p>
+                <p>지금 까지 해왔던 일들과 다소 다른 업무를 배우고 있지만</p>
+                <p>최종적으로는 파이썬(Python)을 기반으로 웹 사이트를 제작하려고 합니다.</p>
             </div>
-            <div class="content">
-                <div class="photo">
-                    <img src="{% static 'pybo/mypic.jpg' %}" width="250px" height="155px" alt="내사진">
-                </div>
-                <div class="text">
-                    <p>인천출생, 인천세일고등학교, 경기대학교 행정학과 졸업</p>
-                    <p>현재 인천 부개동에 거주중. 취미는 게임 / 책읽기 입니다.</p>
-                    <p>지금 까지 해왔던 일들과 다소 다른 업무를 배우고 있지만</p>
-                    <p>최종적으로는 파이썬(Python)을 기반으로 웹 사이트를 제작하려고 합니다.</p>
-                </div>
+        </div>
+    </section>
+    <section id="job">
+        <div class="page-title">
+            <h2><strong>My Career</strong></h2>
+        </div>
+        <div class="content">
+            <div class="photo" style="float:left">
+                <img src="{% static 'pybo/career.jpg' %}" width="250px" height="155px" alt="career">
             </div>
-        </section>
-        <section id="job">
-            <div class="page-title">
-                <h2><strong>My Career</strong></h2>
-            </div>
-            <div class="content">
-                <div class="text">
-                    <p>총무, 영업, 자영업운영부터 요리까지 다소 특이한 이력들이 있습니다.</p>
-                    <ul id="career">
-                        <li>한국금융투자협회 - 총무팀</li>
-                        <li>(주)한국에자이 - 영업팀</li>
-                        <li>'숯불갈비 명성' - 운영</li>
-                        <li>행복해지는 60초 전우치 - 주방장</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-        <section id="skill">
-            <div class="page-title">
-                <h2><strong>My Skill</strong></h2>
-            </div>
-            <div class="content">
-                <div class="text">
-                    <p>☞ 작품을 클릭하면 사이트로 이동합니다.</p>
-                    <ol id="link">
-                        <li><a href="http://127.0.0.1:8000/pybo/board/">회원관리형 게시판</a></li>
-                        <li><a href="#">북마크 관리 페이지</a></li>
-                        <li><a href="#">팀 프로젝트 이름</a></li>
-                    </ol>
-                </div>
-            </div>
-        </section>
-        <footer>
-            <div id="bottomMenu">
-                <ul>
-                    <li><a href="https://blog.naver.com/anhyonchul" target="_blank">
-                        blog</a></li>
-                    <li><a href="https://www.facebook.com/hyonchul.an" target="_blank">SNS</a></li>
-                    <li><a href="mailto:anhyonchul@dctribe.com?Subject=제목을%20입력하세요" target="_blank">
-                        anhyonchul@dctribe.com</a></li>
+            <div class="text">
+                <p>총무, 영업, 자영업운영부터 요리까지 다소 특이한 이력들이 있습니다.</p>
+                <ul id="career">
+                    <li>한국금융투자협회 - 총무팀</li>
+                    <li>(주)한국에자이 - 영업팀</li>
+                    <li>'숯불갈비 명성' - 운영</li>
+                    <li>행복해지는 60초 전우치 - 주방장</li>
                 </ul>
             </div>
-        </footer>
-    </div>
+
+        </div>
+    </section>
+    <section id="skill">
+        <div class="page-title">
+            <h2><strong>My Skill</strong></h2>
+        </div>
+        <div class="content">
+            <div class="photo" style="float:right">
+                <img src="{% static 'pybo/skill.jpg' %}" width="250px" height="155px" alt="skill">
+            </div>
+            <div class="text">
+                <p>☞ 작품을 클릭하면 사이트로 이동합니다.</p>
+                <ol id="link">
+                    <li><a href="http://127.0.0.1:8000/pybo/board/">회원관리형 게시판</a></li>
+                    <li><a href="#">북마크 관리 페이지</a></li>
+                    <li><a href="#">팀 프로젝트 이름</a></li>
+                </ol>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div id="bottomMenu">
+            <ul>
+                <li><a href="https://blog.naver.com/anhyonchul" target="_blank">
+                    blog</a></li>
+                <li><a href="https://www.facebook.com/hyonchul.an" target="_blank">SNS</a></li>
+                <li><a href="mailto:anhyonchul@dctribe.com?Subject=제목을%20입력하세요" target="_blank">
+                    anhyonchul@dctribe.com</a></li>
+            </ul>
+        </div>
+    </footer>
+</div>
 <!-- 제이쿼리 JS -->
 <script src="{% static 'jquery-3.6.0.js' %}"></script>
 <!-- 부트스트랩 JS -->

@@ -1,9 +1,6 @@
 /* 구글 웹 폰트 적용 */
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Otomanopee+One&display=swap');
 
-/* 모바일 기준 */
-*{margin:0; padding: 0;}
-#container{width: 100%; margin:0 auto;}
 
 /* header 스타일 */
 header{width: 100%; height: 250px;
@@ -23,7 +20,6 @@ nav{height: 52px; background: darkslategrey; line-height: 60px;}
 section{width: 100%; padding: 10px 5%;}
 section:nth-child(2n+1){background: rgb(215, 239, 253)}
 section .page-title{padding: 15px; font-family: 'Do Hyeon', sans-serif;}
-section .content .photo{display: none;}
 section .content .text p{line-height: 2em; padding-left: 30px;}
 section .content #career li{margin-left: 50px; line-height: 2em; list-style: none;
     font-family: 'Do Hyeon', sans-serif;}
@@ -41,6 +37,10 @@ footer #bottomMenu ul li{display: inline; padding: 0 20px;
 footer #bottomMenu ul li:last-child{border:none}
 footer #bottomMenu ul li a{text-decoration: none; color: #222}
 
+
+/* 모바일 기준 */
+*{margin:0; padding: 0;}
+#container{width: 100%; margin:0 auto;}
 
 /* 태블릿 기준 - 768px 이상 */
 @media screen and (min-width: 768px) {

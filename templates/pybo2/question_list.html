@@ -6,7 +6,7 @@
     <table class="table my-1">
         <thead>
             <tr class="thead-dark">
-                <th>취미 게시판 (이 게시판은 추천/댓글 기능이 제공되지 않습니다.)</th>
+                <th>취미 게시판</th>
             </tr>
         </thead>
     </table>
@@ -17,6 +17,7 @@
         <div class="col-2">
             <select class="form-control so">
                 <option value="recent" {% if so == 'recent' %}selected{% endif %}>최신순</option>
+                <option value="recommend" {% if so == 'recommend' %}selected{% endif %}>추천순</option>
                 <option value="popular" {% if so == 'popular' %}selected{% endif %}>인기순</option>
             </select>
         </div>
@@ -36,6 +37,7 @@
         <thead>
         <tr class="text-center thead-dark">
             <th>번호</th>
+            <th>추천</th>
             <th style="width:50%">제목</th>
             <th>작성자</th>
             <th>작성일자</th>
@@ -46,6 +48,16 @@
         {% for question in question_list %}
         <tr class="text-center">
             <td>{{ question_list.paginator.count|sub:question_list.start_index|sub:forloop.counter0|add:1 }}</td>
+
+            <!-- 추천 영역 -->
+            <td>
+                {% if question.voter.all.count > 0 %}
+                <span class="badge badge-warning px-2 py-1">
+                    {{ question.voter.all.count }}
+                </span>
+                {% endif %}
+            </td>
+
             <td class="text-left">
                 <a href="{% url 'pybo2:detail' question.id %}" style="color:black">{{ question.subject }}</a>
                 {% if question.answer_set.count > 0 %}

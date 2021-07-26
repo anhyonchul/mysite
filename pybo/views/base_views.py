@@ -41,7 +41,7 @@ def board(request):
     paginator = Paginator(question_list, 15)
     page_obj = paginator.get_page(page)
 
-    context = {'question_list': page_obj, 'page': page, 'kw': kw}  # {key : value}
+    context = {'question_list': page_obj, 'page': page, 'kw': kw, 'so': so}  # {key : value}
     return render(request, 'pybo/question_list.html', context)
 
 
