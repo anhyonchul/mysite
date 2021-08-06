@@ -1,136 +1,110 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block style %}
-
-/* 구글 웹 폰트 적용 */
-@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Otomanopee+One&display=swap');
-
-
-/* header 스타일 */
-header{width: 100%; height: 350px; background: url("/static/pybo/bg5.jpg") no-repeat; background-size: cover;}
-#nav{height: 52px; background: darkslategrey; line-height: 60px;}
-#main-nav{list-style: none; text-align: right; padding-right: 40px; font-size: 1.3rem;
-        font-family: 'Otomanopee One', sans-serif;}
-#main-nav li{display: inline; margin:0 15px}
-#main-nav li a:link, a:visited{text-decoration: none; color:greenyellow}
-#main-nav li a:hover{color: yellow}
-
-/* 본문 스타일 */
-section{width: 100%; padding: 10px 5%;}
-section:nth-child(2n){background: #FDF5E6}
-section:nth-child(2n+1){background: rgb(215, 239, 253)}
-section .page-title{padding: 15px; font-family: 'Do Hyeon', sans-serif;}
-section .content .text p{line-height: 2em; padding-left: 30px;}
-section .content #career li{margin-left: 50px; line-height: 2em; list-style: none;
-    font-family: 'Do Hyeon', sans-serif;}
-section .content #link{padding-left: 30px;}
-section .content #link li{margin: 15px}
-section .content #link li a{text-decoration: none; color:black; font-family: 'Do Hyeon', sans-serif;}
-#job {text-align: right;}
-
-/* footer 스타일 */
-footer{height: 60px; border-top: 2px solid #aaa}
-footer #bottomMenu{margin-top: 20px; margin-left: 60px;}
-footer #bottomMenu ul{list-style: none;}
-footer #bottomMenu ul li{display: inline; padding: 0 20px; border-right: 1px solid #ccc}
-footer #bottomMenu ul li:last-child{border:none}
-footer #bottomMenu ul li a{text-decoration: none; color: #222}
 
 {% endblock %}
 
 
 {% block content %}
-{% load static %}
-<br>
+
 <div class="container my-1">
-  <table class="table my-1">
-      <thead>
-          <tr class="thead-dark">
-              <th>나의 프로필 페이지</th>
-          </tr>
-      </thead>
-  </table>
-<div>
-    <header>
-        <nav id="nav">
-            <ul id="main-nav">
-                <li><a href="#who">Who Am I</a></li>
-                <li><a href="#job">Career</a></li>
-                <li><a href="#skill">My Skill</a></li>
-            </ul>
-        </nav>
-    </header>
-    <br>
-    <section id="who">
-        <div class="page-title">
-            <h2><strong>Who Am I</strong></h2>
-        </div>
-        <div class="content">
-            <div class="photo" style="float:right">
-                <img src="{% static 'pybo/mypic.jpg' %}" width="250px" height="160px" alt="내사진">
+    <div class="text-center">
+        <h2 class="my-5"><i class="fas fa-id-badge fa-lg"></i> 제작자 프로필</h2>
+    </div>
+
+    <div class="card">
+        <div class="container my-4">
+            <div class="d-flex justify-content-between border-bottom">
+                <div>
+                    <strong>PROFILE</strong>
+                </div>
             </div>
-            <div class="text">
-                <p>인천출생, 인천세일고등학교, 경기대학교 행정학과 졸업</p>
-                <p>현재 인천 부개동에 거주중. 취미는 게임 / 책읽기 입니다.</p>
-                <p>지금 까지 해왔던 일들과 다소 다른 업무를 배우고 있지만</p>
-                <p>최종적으로는 파이썬(Python)을 기반으로 웹 사이트를 제작하려고 합니다.</p>
+<br>
+            <div class="container">
+              <div class="row">
+                <div class="col-6">
+                  <div class="card" id="num1">
+                    <div class="card-header">
+                        <img src="{% static 'pybo/mypic.jpg' %}"
+                             style="max-width: 100%; height: auto; display: block; border-radius: 10px;" alt="월풀">
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title">Who Am I</h5>
+                      <p class="card-text">
+                        인천출생, 인천세일고등학교, 경기대학교 행정학과 졸업<br>
+                        현재 인천 부개동에 거주중. 취미는 게임 / 책읽기 입니다.<br>
+                        지금 까지 해왔던 일들과 다소 다른 업무를 시작했고<br>
+                        파이썬(Python)을 기반으로 웹 사이트를 제작합니다.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="card" id="num2">
+                    <div class="card-header">
+                        <img src="{% static 'pybo/career.jpg' %}"
+                             style="max-width: 100%; height: auto; display: block; border-radius: 10px;" alt="픽업">
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title">Career</h5>
+                      <p class="card-text">
+                        총무, 자영업운영부터 요리까지 다소 특이한 이력들이 있습니다.<br>
+                        여러 실무경험을 바탕으로 다방면의 작업이 가능합니다.<br><br>
+                        &nbsp;&nbsp;한국금융투자협회 - 총무팀<br>
+                        &nbsp;&nbsp;'숯불갈비 명성' - 운영<br>
+                        &nbsp;&nbsp;행복해지는 60초 전우치 - 주방장<br>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-        </div>
-    </section>
-    <section id="job">
-        <div class="page-title">
-            <h2><strong>My Career</strong></h2>
-        </div>
-        <div class="content">
-            <div class="photo" style="float:left">
-                <img src="{% static 'pybo/career.jpg' %}" width="250px" height="160px" alt="career">
+<br>
+            <div class="container">
+                      <div class="h6 border-bottom py-1 font-weight-bolder">
+                          &nbsp;&nbsp;안내사항
+                      </div>
             </div>
-            <div class="text">
-                <p>총무, 영업, 자영업운영부터 요리까지 다소 특이한 이력들이 있습니다.</p>
-                <p>여러 실무경험을 바탕으로 다방면의 작업이 가능합니다.</p>
-                <ul id="career">
-                    <li>한국금융투자협회 - 총무팀</li>
-                    <li>(주)한국에자이 - 영업팀</li>
-                    <li>'숯불갈비 명성' - 운영</li>
-                    <li>행복해지는 60초 전우치 - 주방장</li>
-                </ul>
-            </div>
+                      <ul class="slide my-1">
+                            <li style="list-style:none;"><i class="fas fa-hand-point-up"></i>
+                                &nbsp;제작한 포트폴리오는 상당 페이지에서 확인 하실수 있습니다.
+                            </li>
+                            <li style="list-style:none;"><i class="fas fa-hand-point-up"></i>
+                                &nbsp;연락은 e-mail 혹은 직접연락 등등 다양한 수단 전부 가능합니다.
+                            </li>
+                            <li style="list-style:none;"><i class="fas fa-hand-point-up"></i>
+                                &nbsp;이력서가 필요하시면 연락 남겨주세요
+                            </li>
+                      </ul>
 
         </div>
-    </section>
-    <section id="skill">
-        <div class="page-title">
-            <h2><strong>My Skill</strong></h2>
-        </div>
-        <div class="content">
-            <div class="photo" style="float:right">
-                <img src="{% static 'pybo/skill.jpg' %}" width="250px" height="160px" alt="skill">
-            </div>
-            <div class="text">
-                <p>☞ 작품을 클릭하면 사이트로 이동합니다.</p>
-                <ol id="link">
-                    <li><a href="http://127.0.0.1:8000/pybo/board/">회원관리형 게시판</a></li>
-                    <li><a href="#">팀 프로젝트 1 (준비중)</a></li>
-                    <li><a href="#">팀 프로젝트 2 (준비중)</a></li>
-                    <li><a href="#">팀 프로젝트 3 (준비중)</a></li>
-                </ol>
-            </div>
-        </div>
-    </section>
-    <footer>
-        <div id="bottomMenu">
-            <ul>
-                <li><a href="https://blog.naver.com/anhyonchul" target="_blank">
-                    blog</a></li>
-                <li><a href="https://www.facebook.com/hyonchul.an" target="_blank">SNS</a></li>
-                <li><a href="mailto:anhyonchul@dctribe.com?Subject=제목을%20입력하세요" target="_blank">
-                    anhyonchul@dctribe.com</a></li>
-            </ul>
-        </div>
-    </footer>
-  </div>
+    </div>
 
 </div>
 
 
 {% endblock %}
+
+<!--자바스크립트 Start-->
+{% block script %}
+
+<script>
+$(document).ready(function() {
+
+//슬라이드
+    $('.slide').inewsticker({
+        speed       : 3500,
+        effect      : 'slide',
+        dir         : 'ltr',
+        font_size   : 15,
+        color       : '#000',
+        font_family : 'arial',
+        delay_after : 1000
+    });
+
+});
+</script>
+<script src="{% static 'inewsticker/inewsticker.js' %}"></script>
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+{% endblock %}
+<!--자바스크립트 End-->

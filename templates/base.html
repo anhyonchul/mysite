@@ -6,22 +6,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!--     부트스트랩 CSS-->
     <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
-    <title>Welcome! PyWeb</title>
+    <title>Pension Paradise</title>
     <style>
+        body{background-color: #f5f5f5; padding-top:50px;}
         {% block style %}
         {% endblock %}
     </style>
 </head>
 <body>
 {% include "navbar.html" %}
+
 <!--기본 템플릿 안에 삽입될 내용 Start-->
 {% block content %}
 {% endblock %}
 <!--기본 템플릿 안에 삽입될 내용 End-->
+<br>
+<footer class="py-4 bg-dark nt_footer">
+    <div class="container">
+        <div class="footer_box">
+            <div>
+                <p class="footer_text" style="color:#a0a0a0">
+                    <strong>©2021 • https://anhyonchul.pythonanywhere.com/</strong>
+                </p>
+            </div>
+           <div style="float:right;">
+                <p class="footer_text" style="color:#a0a0a0">
+                    Contact &nbsp;ㅣ
+                    &nbsp;&nbsp;<i class="fas fa-envelope-square"></i>&nbsp;&nbsp;ㅣ
+                    &nbsp;&nbsp;<i class="fab fa-twitter-square"></i>&nbsp;&nbsp;ㅣ
+                    &nbsp;&nbsp;<i class="fab fa-instagram"></i>&nbsp;&nbsp;ㅣ
+                    &nbsp;&nbsp;<i class="fab fa-facebook-square"></i>&nbsp;&nbsp;ㅣ
+                </p>
+           </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</footer>
+
+
 <!-- 제이쿼리 JS -->
 <script src="{% static 'jquery-3.6.0.js' %}"></script>
 <!-- 부트스트랩 JS -->
+<script src="{% static 'bootstrap.bundle.js' %}"></script>
 <script src="{% static 'bootstrap.js' %}"></script>
 <!--자바스크립트 Start-->
 {% block script %}

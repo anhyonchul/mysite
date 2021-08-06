@@ -29,7 +29,7 @@ def index(request):
             Q(answer__author__username__icontains=kw)  # 답변 글쓴이검색
         ).distinct()
 
-    paginator = Paginator(question_list, 15)
+    paginator = Paginator(question_list, 12)
     page_obj = paginator.get_page(page)
 
     context = {'question_list': page_obj, 'page': page, 'kw': kw, 'so': so}

@@ -1,74 +1,61 @@
 {% load static %}
-<!--네비게이션 바-->
-<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
 
-    <!-- 왼쪽 부분 -->
-    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2" id="navbarNav">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item" style="padding-left:50px;">
-                <a class="nav-link" href="{% url 'pybo:profile' %}"><strong>프로필1</strong></a>
-            </li>
+<nav class="navbar fixed-top navbar-expand-sm bg-dark navbar-dark">
+    <!-- 제목 -->
+    <a class="navbar-brand" href="{% url 'pybo:index' %}"><strong>MyWeb</strong></a>
 
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'pybo:profile2' %}"><strong>프로필2</strong></a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'pybo:board' %}"><strong>질문/답변 게시판</strong></a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'pybo2:index' %}"><strong>취미게시판</strong></a>
-            </li>
-
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"><strong>드롭다운연습</strong></a>
-                    <div class="dropdown-menu">
-                        <a class="nav-link" href="{% url 'pybo:jqtest' %}" target="_blank">TEST 1</a>
-                        <a class="nav-link" href="{% url 'pybo:imgtest' %}" target="_blank">TEST 2</a>
-                        <a class="nav-link" href="{% url 'pybo:market' %}" target="_blank">TEST 3</a>
-                        <a class="nav-link" href="{% url 'pybo:components' %}" target="_blank">TEST 4</a>
-                    </div>
-            </li>
-        </ul>
-    </div>
-    <!-- 왼쪽 부분 끝 -->
-
-    <!--로고 부분-->
-    <div>
-    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar"
+              aria-controls="collapsibleNavbar" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <a class="navbar-brand" href="{% url 'pybo:index' %}">
-        <img src="{% static 'pybo/pyweb_banner.jpg' %}" width="110px" height="32px" alt="navpic"
-             style="border: 3px solid #000; border-radius: 5px; "></a>
-
-    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav-R"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    </div>
-    <!--로고 부분-->
-
-    <!-- 오른쪽 부분 -->
-    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" id="navbarNav-R">
-        <ul class="navbar-nav ml-auto">
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav navbar-dark">
             <li class="nav-item">
-                {% if user.is_authenticated %}
-                <a class="nav-link" href="{% url 'common:logout' %}">
-                    <strong>{{ user.username }} (로그아웃)</strong></a>
-                {% else %}
-                <a class="nav-link" href="{% url 'common:login' %}"><strong>로그인</strong></a>
-                {% endif %}
+                <a class="nav-link" href="{% url 'pybo:profile' %}">
+                    <i class="fas fa-id-badge"></i>&nbsp;<strong>나의 프로필</strong></a>
             </li>
 
-            <li class="nav-item" style="padding-right:50px;">
-                <a class="nav-link" href="{% url 'common:signup' %}"><strong>회원가입</strong></a>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="fas fa-home"></i>&nbsp;<strong>포트폴리오 모음(작업중)</strong></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'pybo:board' %}">
+                    <i class="fas fa-clipboard"></i>&nbsp;<strong>자유게시판</strong></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'pybo2:index' %}">
+                    <i class="fas fa-clipboard"></i>&nbsp;<strong>취미게시판</strong></a>
             </li>
 
         </ul>
+
+        <!-- Search -->
+        <form class="form-inline ml-auto" action="">
+            <!-- inline여야 간격이 없이 메뉴처럼 나온다. ml-atuo : 우측으로 붙게하기-->
+            <ul class="navbar-nav navbar-dark">
+                <li class="nav-item">
+                    {% if user.is_authenticated %}
+                    <a class="nav-link" href="{% url 'common:logout' %}">
+                        <i class="fas fa-sign-out-alt"></i>&nbsp;'{{ user.username }}'님(로그아웃)</a>
+                    {% else %}
+                    <a class="nav-link" href="{% url 'common:login' %}">
+                        <i class="fas fa-sign-in-alt"></i>&nbsp;로그인</a>
+                    {% endif %}
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'common:signup' %}">
+                        <i class="fas fa-sign-in-alt"></i>&nbsp;회원가입</a>
+                </li>
+            </ul>
+        </form>
     </div>
-    <!-- 오른쪽 부분 끝 -->
 </nav>
+
+
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>

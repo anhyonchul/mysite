@@ -1,45 +1,18 @@
+{% extends 'base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
-    <script src="{% static 'pybo/watch.js' %}"></script>
-    <title>Welcome! PyWeb</title>
-</head>
-<body>
-  {% include 'navbar.html' %}
-  <br>
-  <div class="container my-1">
-      <table class="table my-1">
-          <thead>
-              <tr class="thead-dark">
-                  <th>PyWeb 인덱스 화면 입니다.</th>
-              </tr>
-          </thead>
-      </table>
-  </div>
-  <div class="container">
-      <div class="jumbotron my-1">
-        <div class="text-center" style="float:none; margin:0 auto">
-            <img src="{% static 'pybo/index.jpg' %}" width="1000px" height="500px" alt="indexpic">
+
+{% block content %}
+<br>
+<div class="container my-1">
+    <div class="card">
+        <div class="container my-4">
+            <div class="card">
+                <img src="{% static 'pybo/main.jpg' %}"
+                     style="max-width: 100%; height: auto; display: block; border-radius: 10px;" alt="main">
+            </div>
         </div>
-      </div>
-  </div>
-  <div class="container my-1">
-      <table class="table my-1">
-          <thead>
-              <tr class="thead-dark">
-                  <th id="demo"style="text-align:right; padding-right:55px;"></th>
-              </tr>
-          </thead>
-      </table>
-  </div>
-<!-- 제이쿼리 JS -->
-<script src="{% static 'jquery-3.6.0.js' %}"></script>
-<!-- 부트스트랩 JS -->
-<script src="{% static 'bootstrap.js' %}"></script>
-</body>
-</html>
+    </div>
+</div>
+
+{% endblock %}

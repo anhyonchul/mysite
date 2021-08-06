@@ -38,7 +38,7 @@ def board(request):
         ).distinct()
 
     # 페이징처리               #페이지당 15개씩 보여주기
-    paginator = Paginator(question_list, 15)
+    paginator = Paginator(question_list, 12)
     page_obj = paginator.get_page(page)
 
     context = {'question_list': page_obj, 'page': page, 'kw': kw, 'so': so}  # {key : value}
